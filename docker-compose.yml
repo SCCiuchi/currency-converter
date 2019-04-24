@@ -1,18 +1,62 @@
-version: '3.3'
+version: '3'
+
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: converter_app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - converter-app-network
+
+  webserver:
+    image: nginx:alpine
+    container_name: converter_nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - converter-app-network
+
   db:
     image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'admin'
-      MYSQL_PASSWORD: 'admin'
-      MYSQL_ROOT_PASSWORD: 'admin'
+    container_name: converter_db
+    restart: unless-stopped
+    tty: true
     ports:
-      - '3306:3306'
+     - "3306:3306"
     expose:
-      - '3306'
+     - '3306'
     volumes:
-      - my-db:/var/lib/mysql
+     - my-db:/var/lib/mysql
+     - ./mysql/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_DATABASE: 'currency'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'parolasigura'
+      MYSQL_ROOT_PASSWORD: 'parolasupersigura'
+    networks:
+      - converter-app-network
+
+networks:
+  converter-app-network:
+    driver: bridge
+
 volumes:
   my-db:
+    driver: local

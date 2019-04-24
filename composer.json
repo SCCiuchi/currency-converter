@@ -1,0 +1,12 @@
+{
+    "name": "stefanciuchi/currency-converter",
+    "description": "php learning project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "SCCiuchi",
+            "email": "stefan.ciuchi@yahoo.com"
+        }
+    ],
+    "require": {}
+}
