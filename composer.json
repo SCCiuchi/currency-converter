@@ -8,5 +8,11 @@
             "email": "stefan.ciuchi@yahoo.com"
         }
     ],
+    "autoload": {
+        "files": [
+            "database/db_connection.php",
+            "src/get_input.php"
+        ]
+    },
     "require": {}
 }
