@@ -2,10 +2,10 @@
 
     function createDbConnection()
     {
-        $servername = "0.0.0.0";
-        $username = "root";
-        $password = "admin";
-        $dbname = "db";
+        $servername = "127.0.0.1";
+        $username = "stefanciuchi";
+        $password = "password";
+        $dbname = "currency_converter";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 

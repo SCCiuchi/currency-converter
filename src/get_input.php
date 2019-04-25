@@ -1,6 +1,6 @@
 <?php
 
-$id = $_POST['currency'];
+$currency = $_POST['currency'];
 
 function getApiResponse()
 {
@@ -42,6 +42,6 @@ function executeCurrencyExchange($selectedCurrency, $currencies)
     return $data;
 }
 
-if (!empty($id)) {
-    $values = getUserSelectedCurrency($id);
+if (!empty($currency)) {
+    $values = getUserSelectedCurrency($currency);
 }
