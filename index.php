@@ -10,7 +10,7 @@ include('get_input.php');
 	</head>
 
 	<body>
-		<h2>Exchange rate:</h2>
+		<h2>Exchange rate: sunt pe docker</h2>
 		<form action="" method="post" autocomplete="off">
 			<div class="form-group dropdown">
 			  <select name="currency">
