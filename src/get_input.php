@@ -1,8 +1,6 @@
 <?php
 
-$currency = $_POST['currency'];
-
-function getApiResponse()
+function getCurrencyValues()
 {
     $url = 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml';
     $response = file_get_contents($url);
@@ -18,13 +16,19 @@ function getApiResponse()
     return $currencies;
 }
 
-function getUserSelectedCurrency($id)
+function getSelectedCurrency()
 {
-    $currencies = getApiResponse();
-    $selectedCurrency = $currencies[$id];
+    $currencies = getCurrencyValues();
+    $filteredCurrencies = [];
 
-    return executeCurrencyExchange($selectedCurrency, $currencies);
+    if (empty($_GET['currency'])) {
+        $filteredCurrencies = $currencies;
+    }
+
+    var_dump($filteredCurrencies);
+    return $filteredCurrencies;
 }
+
 
 function executeCurrencyExchange($selectedCurrency, $currencies)
 {
@@ -42,6 +46,10 @@ function executeCurrencyExchange($selectedCurrency, $currencies)
     return $data;
 }
 
-if (!empty($currency)) {
-    $values = getUserSelectedCurrency($currency);
+function displayExchangeRate()
+{
+    $filteredCurrencies = getSelectedCurrency();
+
+
+    return $filteredCurrencies;
 }
