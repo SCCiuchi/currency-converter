@@ -12,7 +12,8 @@
         "ext-SimpleXML": "*",
         "guzzlehttp/guzzle": "^6.3",
         "php-http/message": "^1.7",
-        "ext-http": "*"
+        "ext-http": "*",
+        "twig/twig": "^2.9"
     },
     "autoload": {
       "psr-4": {

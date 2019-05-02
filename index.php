@@ -1,14 +1,10 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
+use Twig\Loader\FilesystemLoader;
 
-use App\Converter\DisplayManager;
+$loader = new \Twig\Loader\FilesystemLoader('./web/views');
+$twig = new \Twig\Environment($loader);
 
-$display = new DisplayManager();
-$tpl = new \App\View\Template('./web/views/main.tpl');
-$tpl->set('exchange', $display->displayEcbResult());
-
-$tpl->render();
-
-
+echo $twig->render('base.html');
 
