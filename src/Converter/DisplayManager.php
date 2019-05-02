@@ -2,10 +2,6 @@
 
 namespace App\Converter;
 
-use App\Converter\EcbRate;
-use App\Converter\BnrRate;
-use App\Converter\ExchangeManager;
-
 class DisplayManager
 {
     public function displayEcbResult()
@@ -18,7 +14,6 @@ class DisplayManager
             $result = $exchange->executeCurrencyExchange($currency);
         }
 
-        var_dump($result);
         echo $result;
     }
 
