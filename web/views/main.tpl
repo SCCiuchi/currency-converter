@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
 <body class="text-center">
 <div class="container">
     <div class="py-5 text-center">
-        <img src="#" alt="#">
+        <img src="https://dynamicconverter.com/img/dynamicconverter-footer.png" alt="currency-converter-image">
         <h2>Currency Converter</h2>
-        <p class="lead">placeholder text for now...</p>
+        <p class="lead">A currency converter app.</p>
     </div>
     <div class="row row justify-content-center">
         <div class="col-md-4 order-md-2 mb-4">
@@ -21,7 +20,7 @@
                 <span class="text-muted">Currency Rate</span>
                 <span class="badge badge-secondary badge-pill">19</span>
             </h4>
-            <?= displayExchangeRate() ?>
+            {exchange}
         </div>
         <div class="col-md-8 order-md-1">
             <form action="" method="post" autocomplete="off">
@@ -69,6 +68,7 @@
                 </div>
                 <hr class="mb-4">
                 <button type="submit" class="btn btn-primary col-md-4">Show Rate</button>
+                <button type="reset" class="btn btn-primary col-md-4" value="Reset">Reset</button>
             </form>
         </div>
     </div>
@@ -83,5 +83,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-</body>
 </html>

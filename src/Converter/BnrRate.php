@@ -18,7 +18,7 @@ class BnrRate implements Rate
             $client = new Client();
             $response = $client->get(static::URL);
         } catch (ServerException $e) {
-            $tpl = new Template('./web/views/url-error.tpl');
+            $tpl = new Template('./web/views/error.tpl');
             $tpl->render();
 
             echo $e;
@@ -36,7 +36,7 @@ class BnrRate implements Rate
             $response = new SimpleXMLElement($urlResponse);
             $xml = $response;
         } else {
-            $tpl = new Template('./web/views/url-error.tpl');
+            $tpl = new Template('./web/views/error.tpl');
             $tpl->render();
         }
 

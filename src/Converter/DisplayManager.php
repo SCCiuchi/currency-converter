@@ -2,6 +2,8 @@
 
 namespace App\Converter;
 
+use App\View\Template;
+
 class DisplayManager
 {
     public function displayEcbResult()
@@ -12,30 +14,31 @@ class DisplayManager
         if (isset($currency)) {
             $exchange = new ExchangeManager();
             $result = $exchange->executeCurrencyExchange($currency);
+        } else {
+            $tpl = new Template('./web/views/error.tpl');
+            $tpl->render();
         }
 
-        echo $result;
+        return $result;
     }
 
     public function displayBnrResult()
     {
         $currency = $this->getUserSelectedCurrency();
+        $result = '';
 
         if (isset($currency)) {
-            echo $currency;
+            $exchange = new ExchangeManager();
+            $result = $exchange->executeCurrencyExchange($currency);
         }
+
+        return $result;
     }
 
     private function getUserSelectedCurrency()
     {
-        $currency = $_POST['currency'];
-        $error = false;
-
-        if (empty($currency)) {
-            $error = true;
-        }
-        if ($error) {
-            echo "Something went wrong or you haven't selected a currency";
+        if(isset($_POST['currency'])) {
+            $currency = $_POST['currency'];
         }
 
         return $currency;
