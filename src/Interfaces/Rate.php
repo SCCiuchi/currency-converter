@@ -4,7 +4,9 @@ namespace App\Interfaces;
 
 interface Rate
 {
-    public function getContent(string $url);
+    public function validateUrl();
+
+    public function getContent();
 
     public function formatContent():array;
 }

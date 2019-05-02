@@ -2,25 +2,47 @@
 
 namespace App\Converter;
 
+use App\Converter\EcbRate;
+use App\Converter\BnrRate;
+use App\Converter\ExchangeManager;
+
 class DisplayManager
 {
-    private function getUserSelectedCurrency($currency)
+    public function displayEcbResult()
     {
-        $currency = $_POST['currency'];
+        $currency = $this->getUserSelectedCurrency();
+        $result = '';
 
-        $currencies = $this->getApiResponse();
-        $selectedCurrency = $currencies[$currency];
+        if (isset($currency)) {
+            $exchange = new ExchangeManager();
+            $result = $exchange->executeCurrencyExchange($currency);
+        }
+
+        var_dump($result);
+        echo $result;
     }
 
-
-
-    public function displayResult()
+    public function displayBnrResult()
     {
-        $values = [];
+        $currency = $this->getUserSelectedCurrency();
 
-        if (!empty($currency))
-        {
-            $values = $this->getUserSelectedCurrency($currency);
+        if (isset($currency)) {
+            echo $currency;
         }
+    }
+
+    private function getUserSelectedCurrency()
+    {
+        $currency = $_POST['currency'];
+        $error = false;
+
+        if (empty($currency)) {
+            $error = true;
+        }
+        if ($error) {
+            echo "Something went wrong or you haven't selected a currency";
+        }
+
+        return $currency;
     }
 }

@@ -2,21 +2,27 @@
 
 namespace App\Converter;
 
+
 class ExchangeManager
 {
-    private function executeCurrencyExchange($selectedCurrency, $currencies)
+    public function executeCurrencyExchange(string $selectedCurrency):string
     {
-        $data = '';
+        $rate = new EcbRate();
+        $currencies = $rate->formatContent();
+        $exchange = '';
 
-        if (!empty($selectedCurrency)) {
-            foreach ($currencies as $currency => $rate) {
-                $exchange = $rate / $selectedCurrency;
-                $result = number_format($exchange, 4, ',', '');
+//        var_dump($currencies);
 
-                $data .= $currency . ' rate is ' . $result . '<br>';
+        if (isset($currencies)) {
+            foreach ($currencies as $currency => $value) {
+                $exchange = $value / $selectedCurrency;
+//                $result = number_format($exchange, 4, ',', '');
+
+                var_dump($exchange);
             }
         }
 
-        return $data;
+        var_dump($exchange);
+        return $exchange;
     }
 }
