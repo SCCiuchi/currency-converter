@@ -3,7 +3,6 @@
 namespace App\Converter;
 
 use App\Interfaces\Rate;
-use App\View\Template;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
 use SimpleXMLElement;

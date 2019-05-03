@@ -17,7 +17,7 @@ class ExchangeManager
                 $operation = $value / $selectedCurrency;
                 $result = number_format($operation, 4, ',', '');
 
-                $exchange .= $currency.' -> '.$result.'<br>';
+                $exchange .= $currency.'  -  '.$result.'<br>';
             }
         }
 

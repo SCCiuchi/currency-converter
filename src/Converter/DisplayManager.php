@@ -2,8 +2,6 @@
 
 namespace App\Converter;
 
-use App\View\Template;
-
 class DisplayManager
 {
     public function displayEcbResult()
@@ -14,9 +12,6 @@ class DisplayManager
         if (isset($currency)) {
             $exchange = new ExchangeManager();
             $result = $exchange->executeCurrencyExchange($currency);
-        } else {
-            $tpl = new Template('./web/views/error.tpl');
-            $tpl->render();
         }
 
         return $result;
