@@ -9,7 +9,7 @@ class DbConnection
         $host = '127.0.0.1';
         $db = 'currency_converter';
         $user = 'stefanciuchi';
-        $pass = '';
+        $pass = 'parolasigura';
         $charset = 'utf8mb4';
 
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
