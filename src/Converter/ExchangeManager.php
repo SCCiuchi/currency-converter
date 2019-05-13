@@ -6,7 +6,7 @@ class ExchangeManager
 {
     public function executeCurrencyExchange(string $selectedCurrency)
     {
-        $rate = new EcbRate();
+        $rate = new EcbRateProvider();
         $currencies = $rate->formatContent();
         $exchange = '';
 
