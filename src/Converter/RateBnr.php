@@ -11,7 +11,14 @@ class RateBnr implements RateProviderInterface
 {
     public function getRate(): CurrencyRates
     {
-        return new CurrencyRates();
+        $rateCollection = $this->getContent();
+        $currencyRates = new CurrencyRates();
+
+        foreach ($rateCollection as $key => $value) {
+            $currencyRates->addCurrency($key, $value);
+        }
+
+        return $currencyRates;
     }
 
     private function getContent()
@@ -38,8 +45,8 @@ class RateBnr implements RateProviderInterface
                 $attributes = $currency->attributes();
                 $currencies[(string)$attributes['currency']] = (float)$currency;
             }
-
-            return $currencies;
         }
+
+        return $currencies;
     }
 }

@@ -9,11 +9,19 @@ use GuzzleHttp\Exception\ServerException;
 
 class RateEcb implements RateProviderInterface
 {
+    function printRate(\App\Interfaces\RateProviderInterface $provider)
+    {
+        var_dump($provider->getRate());
+    }
+
     public function getRate(): CurrencyRates
     {
+        $rateCollection = $this->getContent();
         $currencyRates = new CurrencyRates();
-        $currencyRates->addCurrency('EUR', 1.012312);
-        $currencyRates->addCurrency('USD', 2.012312);
+
+        foreach ($rateCollection as $key => $value) {
+            $currencyRates->addCurrency($key, $value);
+        }
 
         return $currencyRates;
     }
