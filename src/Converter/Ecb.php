@@ -2,19 +2,16 @@
 
 namespace App\Converter;
 
-use App\Core\Provider\RateCollection;
-use App\Core\Provider\XMLReader;
-use SimpleXMLElement;
-use GuzzleHttp\Client;
-use App\Interfaces\RateCollectionInterface;
-use GuzzleHttp\Exception\ServerException;
+use App\Core\RateProvider\RateCollection;
+use App\Core\RateProvider\XMLReader;
+use App\Core\Interfaces\RateCollectionInterface;
 
 class Ecb implements RateCollectionInterface
 {
     /** @var XMLReader */
     private $xmlReader;
 
-    public function __construct(XMLReader $xmlReader)
+    private function __construct(XMLReader $xmlReader)
     {
         $this->xmlReader = $xmlReader;
     }
@@ -24,9 +21,18 @@ class Ecb implements RateCollectionInterface
         $data = $this->xmlReader->getContent('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml');
         $collection = new RateCollection();
 
-        foreach ($collection as $key => $value) {
-            $currencyRates->addCurrency($key, $value);
+        if (isset($data)) {
+            foreach ($xml->Cube->Cube->Cube as $currency) {
+                $attributes = $currency->attributes();
+                $currencies[(string)$attributes['currency']] = (float)$attributes['rate'];
+
+                var_dump($currencies);
+            }
         }
+
+        // foreach ($collection as $key => $value) {
+        //     $currencyRates->addCurrency($key, $value);
+        // }
     }
 
 
