@@ -2,7 +2,7 @@
 
 namespace App\Core\Provider;
 
-class Rate
+class RateCollection
 {
     protected $data = [];
 

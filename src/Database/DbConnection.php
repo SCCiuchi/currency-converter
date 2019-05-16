@@ -21,8 +21,7 @@ class DbConnection
 
     public static function getInstance(): self
     {
-        if (!self::$instance)
-        {
+        if (!self::$instance) {
             self::$instance = new DbConnection();
         }
 
