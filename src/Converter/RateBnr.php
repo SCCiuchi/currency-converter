@@ -2,13 +2,18 @@
 
 namespace App\Converter;
 
-use App\Interfaces\RateProviderInterface;
+use SimpleXMLElement;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
-use SimpleXMLElement;
+use App\Interfaces\RateProviderInterface;
 
 class RateBnr implements RateProviderInterface
 {
+    public function printRate(RateProviderInterface $provider)
+    {
+        $provider->getRate();
+    }
+
     public function getRate(): CurrencyRates
     {
         $rateCollection = $this->getContent();

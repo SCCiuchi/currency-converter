@@ -10,8 +10,8 @@
 ---
 ```
 To Do: 
-* redesign front with twig templates (ecb|bnr)
-* format xml in getContent
-* check db connection and create method to insert the rate info
+* redesign front with twig templates                                - in progress
+* format xml in getContent                                          - DONE -> created object from the array
+* check db connection and create method to insert the rate info     - in progress
 ```
 

@@ -2,16 +2,16 @@
 
 namespace App\Converter;
 
-use App\Interfaces\RateProviderInterface;
 use SimpleXMLElement;
 use GuzzleHttp\Client;
+use App\Interfaces\RateProviderInterface;
 use GuzzleHttp\Exception\ServerException;
 
 class RateEcb implements RateProviderInterface
 {
-    function printRate(\App\Interfaces\RateProviderInterface $provider)
+    public function printRate(RateProviderInterface $provider)
     {
-        var_dump($provider->getRate());
+       $provider->getRate();
     }
 
     public function getRate(): CurrencyRates
