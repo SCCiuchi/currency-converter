@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use App\Converter\CurrencyRates;
 
-interface RateProviderInterface
+interface ProviderInterface
 {
     public function getRate(): CurrencyRates;
 }

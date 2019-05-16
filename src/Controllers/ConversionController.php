@@ -2,7 +2,7 @@
 
 namespace App\Converter;
 
-class ExchangeManager
+class ConversionController
 {
     public function executeCurrencyExchange(string $selectedCurrency)
     {

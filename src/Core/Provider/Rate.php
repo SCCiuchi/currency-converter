@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Converter;
+namespace App\Core\Provider;
 
-class CurrencyRates
+class Rate
 {
     protected $data = [];
 
