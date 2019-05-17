@@ -30,6 +30,7 @@ class DisplayController
             foreach ($output as $item) {
                 echo $item;
             }
+
         }
     }
 
