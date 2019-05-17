@@ -2,25 +2,36 @@
 
 namespace App\Core\Services\ExchangeService;
 
+use App\Core\Services\RateProviderService\RateCollection;
+
 class ExchangeRates
 {
-    public function executeCurrencyExchange(string $selectedCurrency)
+    /** @var RateCollection */
+    protected $rateCollection;
+
+    protected $selectedCurrency;
+
+    public function __construct(RateCollection $rateCollection, string $selectedCurrency)
     {
-        $rate = new EcbRateProvider();
-        $currencies = $rate->formatContent();
-        $exchange = '';
+        $this->rateCollection = $rateCollection;
+        $this->selectedCurrency = $selectedCurrency;
+    }
 
-        if (isset($currencies) && isset($selectedCurrency)) {
-            $selectedCurrency = $currencies[$selectedCurrency];
+    public function executeExchange(): array
+    {
+        $rateCollection = $this->rateCollection;
+        $selectedCurrency = $this->selectedCurrency;
+        $currency = '';
+        $result = '';
 
-            foreach ($currencies as $currency => $value) {
-                $operation = $value / $selectedCurrency;
+        if (!empty($rateCollection)) {
+            foreach ($rateCollection as $currency => $rate) {
+                $operation = $rate / $selectedCurrency;
+
                 $result = number_format($operation, 4, ',', '');
-
-                $exchange .= $currency.'  -  '.$result.'<br>';
             }
         }
 
-        return $exchange;
+        return array($currency, $result);
     }
 }

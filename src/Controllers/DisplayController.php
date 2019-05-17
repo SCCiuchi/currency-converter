@@ -1,36 +1,46 @@
 <?php
 
-namespace App\Converter;
+namespace App\Controllers;
+
+use App\Core\Interfaces\RateCollectionInterface;
+use App\Core\Services\ExchangeService\ExchangeRates;
 
 class DisplayController
 {
-    /** @var Ecb|Bnr */
+    /** @var RateCollectionInterface */
     protected $rateProvider;
 
-    public function __construct($rateProvider)
+    public function __construct(RateCollectionInterface $rateProvider)
     {
         $this->rateProvider = $rateProvider;
-        $this->displayRate($rateProvider);
     }
 
-    public function displayRate($rateProvider)
+    public function displayRate(): void
     {
         $selectedCurrency = $this->getUserSelectedCurrency();
 
         if (isset($selectedCurrency)) {
-            $rateProvider->getRate();
+            $exchangeService = new ExchangeRates(
+                $this->rateProvider->getRate(),
+                $selectedCurrency
+            );
+
+            $output = $exchangeService->executeExchange();
+
+            foreach ($output as $item) {
+                echo $item;
+            }
         }
     }
 
-    private function getUserSelectedCurrency()
+    private function getUserSelectedCurrency(): string
     {
-        $currencyPattern = "/([A-Z][A-Z][A-Z])/g";
-        $selectedCurrency = '';
+        $currencyPattern = "/[A-Z][A-Z][A-Z]/";
 
         if(
             isset($_POST['currency'])
-            && ctype_alpha($selectedCurrency)
-            && preg_match($selectedCurrency, $currencyPattern)
+            && ctype_alpha($_POST['currency'])
+            && preg_match($currencyPattern, $_POST['currency'])
         ) {
             $selectedCurrency = $_POST['currency'];
         }

@@ -8,4 +8,5 @@ $twig = new \Twig\Environment($loader);
 echo $twig->render('partials/converter.html.twig');
 
 
-$debug = new \App\Converter\DisplayController(new \App\Converter\Ecb(new \App\Core\Services\RateProviderService\XMLReader()));
+$debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new \App\Core\Services\RateProviderService\XMLReader()));
+$debug->displayRate();
