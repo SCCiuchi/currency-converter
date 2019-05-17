@@ -25,10 +25,7 @@ class Ecb implements RateCollectionInterface
         if (isset($data)) {
             foreach ($data->Cube->Cube->Cube as $currency) {
                 $attributes = $currency->attributes();
-                $currencies[(string)$attributes['currency']] = (float)$attributes['rate'];
-            }
-            foreach ($currencies as $key => $value) {
-                $collection->addCurrency($key, $value);
+                $collection->addCurrency((string)$attributes['currency'], (float)$attributes['rate']);
             }
         }
 

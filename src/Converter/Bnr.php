@@ -22,21 +22,14 @@ class Bnr implements RateCollectionInterface
         $data = $this->xmlReader->getContent($url);
         $collection = new RateCollection();
 
-//        var_dump($data);
         if (isset($data)) {
             foreach ($data->Body->Cube->Rate as $currency) {
                 $attributes = $currency->attributes();
-                var_dump($data->Body->Cube->Rate);
-                $currencies[(string)$attributes['currency']] = (float)$attributes['rate'];
-
-            }
-            foreach ($currencies as $key => $value) {
-                $collection->addCurrency($key, $value);
-//                var_dump($collection);
+                $collection->addCurrency((string)$attributes['currency'], (float)$currency[0]->__toString());
 
             }
         }
-//        var_dump($collection);
+
         return $collection;
     }
 }
