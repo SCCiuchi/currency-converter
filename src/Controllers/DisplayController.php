@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 use App\Core\Interfaces\RateCollectionInterface;
 use App\Core\Services\ExchangeService\ExchangeRates;
 
@@ -18,6 +20,8 @@ class DisplayController
     public function displayRate(): void
     {
         $selectedCurrency = $this->getUserSelectedCurrency();
+        $loader = new FilesystemLoader(__DIR__.'/../../web/views');
+        $twig = new Environment($loader);
 
         if (isset($selectedCurrency)) {
             $exchangeService = new ExchangeRates(
@@ -31,6 +35,7 @@ class DisplayController
                 echo $item;
             }
 
+            echo $twig->render('partials/converter.html.twig');
         }
     }
 
