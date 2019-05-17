@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\RateProvider;
+namespace App\Core\Services\RateProviderService;
 
 use App\Core\Interfaces\XMLReaderInterface;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Converter;
+namespace App\Core\Services\ExchangeService;
 
-class ConversionController
+class ExchangeRates
 {
     public function executeCurrencyExchange(string $selectedCurrency)
     {

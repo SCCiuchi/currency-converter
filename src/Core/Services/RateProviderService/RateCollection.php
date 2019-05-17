@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\RateProvider;
+namespace App\Core\Services\RateProviderService;
 
 class RateCollection
 {

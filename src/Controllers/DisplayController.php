@@ -11,7 +11,7 @@ class DisplayController
         $result = '';
 
         if (isset($currency)) {
-            $exchange = new ConversionController();
+            $exchange = new ExchangeRates();
             $result = $exchange->executeCurrencyExchange($currency);
         }
 
@@ -25,7 +25,7 @@ class DisplayController
         $result = '';
 
         if (isset($currency)) {
-            $exchange = new ConversionController();
+            $exchange = new ExchangeRates();
             $result = $exchange->executeCurrencyExchange($currency);
         }
 

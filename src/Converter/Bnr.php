@@ -2,51 +2,41 @@
 
 namespace App\Converter;
 
-use SimpleXMLElement;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ServerException;
-use App\Interfaces\RateCollectionInterface;
+use App\Core\Services\RateProviderService\RateCollection;
+use App\Core\Services\RateProviderService\XMLReader;
+use App\Core\Interfaces\RateCollectionInterface;
 
-class Bnr
+class Bnr implements RateCollectionInterface
 {
-    public function getRate(): CurrencyRates
+    /** @var XMLReader */
+    private $xmlReader;
+
+    public function __construct(XMLReader $xmlReader)
     {
-        $rateCollection = $this->getContent();
-        $currencyRates = new CurrencyRates();
-
-        foreach ($rateCollection as $key => $value) {
-            $currencyRates->addCurrency($key, $value);
-        }
-
-        return $currencyRates;
+        $this->xmlReader = $xmlReader;
     }
 
-    private function getContent()
+    public function getRate(): RateCollection
     {
         $url = 'https://www.bnr.ro/nbrfxrates.xml';
-        $currencies = [];
+        $data = $this->xmlReader->getContent($url);
+        $collection = new RateCollection();
 
-        try {
-            $client = new Client();
-            $response = $client->get($url);
-        } catch (ServerException $e) {
-
-        }
-
-        $content = (string)$response->getBody()->getContents();
-
-        if (isset($content)) {
-            $response = new SimpleXMLElement($content);
-            $xml = $response;
-        }
-
-        if (isset($xml)) {
-            foreach ($xml->Body->Cube->Rate as $currency) {
+//        var_dump($data);
+        if (isset($data)) {
+            foreach ($data->Body->Cube->Rate as $currency) {
                 $attributes = $currency->attributes();
-                $currencies[(string)$attributes['currency']] = (float)$currency;
+                var_dump($data->Body->Cube->Rate);
+                $currencies[(string)$attributes['currency']] = (float)$attributes['rate'];
+
+            }
+            foreach ($currencies as $key => $value) {
+                $collection->addCurrency($key, $value);
+//                var_dump($collection);
+
             }
         }
-
-        return $currencies;
+//        var_dump($collection);
+        return $collection;
     }
 }

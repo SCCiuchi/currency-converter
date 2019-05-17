@@ -2,7 +2,7 @@
 
 namespace App\Core\Interfaces;
 
-use App\Core\Provider\RateCollection;
+use App\Core\Services\RateProviderService\RateCollection;
 
 interface RateCollectionInterface
 {
