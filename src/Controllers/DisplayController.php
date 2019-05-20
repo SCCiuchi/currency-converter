@@ -20,8 +20,6 @@ class DisplayController
     public function displayRate(): void
     {
         $selectedCurrency = $this->getUserSelectedCurrency();
-        $loader = new FilesystemLoader(__DIR__.'/../../web/views');
-        $twig = new Environment($loader);
 
         if (isset($selectedCurrency)) {
             $exchangeService = new ExchangeRates(
@@ -30,12 +28,7 @@ class DisplayController
             );
 
             $output = $exchangeService->executeExchange();
-
-            foreach ($output as $item) {
-                echo $item;
-            }
-
-            echo $twig->render('partials/converter.html.twig');
+            var_dump($output);
         }
     }
 

@@ -2,9 +2,15 @@
 
 namespace App\Core\Services\RateProviderService;
 
-class RateCollection implements  \Countable
+class RateCollection implements  \Iterator
 {
+    private $index = 0;
     protected $data = [];
+
+    public function __construct()
+    {
+        $this->index = 0;
+    }
 
     public function addCurrency(string $currency, float $rate): void
     {
@@ -16,8 +22,28 @@ class RateCollection implements  \Countable
         return $this->data;
     }
 
-    public function count()
+    public function current()
     {
-        return $this->data;
+        return $this->data[$this->index];
+    }
+
+    public function key()
+    {
+        return $this->index;
+    }
+
+    public function next()
+    {
+        ++$this->index;
+    }
+
+    public function rewind()
+    {
+        $this->index = 0;
+    }
+
+    public function valid()
+    {
+       return isset($this->data[$this->index]);
     }
 }
