@@ -15,7 +15,8 @@
         "ext-SimpleXML": "*",
         "ext-pdo": "*",
         "ext-http": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-curl": "*"
     },
     "autoload": {
       "psr-4": {

@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use App\Core\Interfaces\RateCollectionInterface;
-use App\Core\Services\ExchangeService\ExchangeRates;
+use Core\Interfaces\RateCollectionInterface;
+use Core\Services\ExchangeService\ExchangeRates;
 
 class DisplayController
 {
