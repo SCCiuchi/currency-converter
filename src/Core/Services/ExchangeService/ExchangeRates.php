@@ -21,23 +21,22 @@ class ExchangeRates
     {
         $rateCollection = $this->rateCollection;
         $selectedCurrency = $this->selectedCurrency;
-        $currency = '';
-        $result = '';
 
         if (!empty($rateCollection)) {
+            $result = [];
+            $findSelectedCurrency = $rateCollection->findSelectedCurrency($selectedCurrency);
 
             foreach ($rateCollection as $currency => $rate) {
+                $operation = $rate['value'] / (float)$findSelectedCurrency['value'];
+                $finalRate = number_format($operation, 3, '.', ',');
 
-                $operation = $rate / $selectedCurrency;
-                var_dump($operation);
-
-                $result = number_format($operation, 4, ',', '');
-                var_dump($result);
+                $result[] = [
+                    'value' => $finalRate,
+                    'label' => $rate['label']
+                ];
             }
-
-
         }
 
-        return array($currency, $result);
+        return $result;
     }
 }

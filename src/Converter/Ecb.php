@@ -28,6 +28,7 @@ class Ecb implements RateCollectionInterface
                 $collection->addCurrency((string)$attributes['currency'], (float)$attributes['rate']);
             }
         }
+
         return $collection;
     }
 }

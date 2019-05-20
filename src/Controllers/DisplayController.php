@@ -27,8 +27,9 @@ class DisplayController
                 $selectedCurrency
             );
 
-            $output = $exchangeService->executeExchange();
-            var_dump($output);
+            $result = $exchangeService->executeExchange();
+
+            var_dump($result);
         }
     }
 

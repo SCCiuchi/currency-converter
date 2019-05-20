@@ -14,12 +14,25 @@ class RateCollection implements  \Iterator
 
     public function addCurrency(string $currency, float $rate): void
     {
-        $this->data[$currency] = $rate;
+//        $this->data[$currency] = $rate;
+        $this->data[] = [
+            "label" => $currency,
+            "value" => $rate
+        ];
     }
 
     public function getRates(): array
     {
         return $this->data;
+    }
+
+    public function findSelectedCurrency(string $currency)
+    {
+        foreach ($this->data as $item) {
+            if ($item['label'] == $currency) {
+                return $item;
+            }
+        }
     }
 
     public function current()

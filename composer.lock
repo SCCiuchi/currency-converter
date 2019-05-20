@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c428b98e105050e7d7d3663607027629",
+    "content-hash": "2efe76f0bd64a8a2a2d366a17291decc",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -647,7 +647,8 @@
     "platform": {
         "ext-simplexml": "*",
         "ext-pdo": "*",
-        "ext-http": "*"
+        "ext-http": "*",
+        "ext-json": "*"
     },
     "platform-dev": []
 }
