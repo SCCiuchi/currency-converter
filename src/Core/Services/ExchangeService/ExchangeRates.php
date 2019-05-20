@@ -25,9 +25,10 @@ class ExchangeRates
         $result = '';
 
         if (!empty($rateCollection)) {
+            var_dump($selectedCurrency);
 
             foreach ($rateCollection as $currency => $rate) {
-                var_dump($selectedCurrency);
+                var_dump($rateCollection);
                 $operation = $rate / $selectedCurrency;
 
                 $result = number_format($operation, 4, ',', '');

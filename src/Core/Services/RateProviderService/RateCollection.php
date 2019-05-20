@@ -2,7 +2,7 @@
 
 namespace App\Core\Services\RateProviderService;
 
-class RateCollection
+class RateCollection implements  \Countable
 {
     protected $data = [];
 
@@ -12,6 +12,11 @@ class RateCollection
     }
 
     public function getRates(): array
+    {
+        return $this->data;
+    }
+
+    public function count()
     {
         return $this->data;
     }
