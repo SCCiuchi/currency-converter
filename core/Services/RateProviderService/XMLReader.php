@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core\Services\RateProviderService;
+namespace Core\Services\RateProviderService;
 
-use App\Core\Interfaces\XMLReaderInterface;
+use Core\Interfaces\XMLReaderInterface;
 
 class XMLReader implements XMLReaderInterface
 {

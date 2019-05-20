@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core\Services\ExchangeService;
+namespace Core\Services\ExchangeService;
 
-use App\Core\Services\RateProviderService\RateCollection;
+use Core\Services\RateProviderService\RateCollection;
 
 class ExchangeRates
 {
