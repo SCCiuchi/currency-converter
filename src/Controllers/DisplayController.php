@@ -5,7 +5,7 @@ namespace App\Controllers;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Core\Interfaces\RateCollectionInterface;
-use Core\Services\ExchangeService\ExchangeRates;
+use Core\Services\ExchangeService\Exchange;
 
 class DisplayController
 {
@@ -22,7 +22,7 @@ class DisplayController
         $selectedCurrency = $this->getUserSelectedCurrency();
 
         if (isset($selectedCurrency)) {
-            $exchangeService = new ExchangeRates(
+            $exchangeService = new Exchange(
                 $this->rateProvider->getRate(),
                 $selectedCurrency
             );

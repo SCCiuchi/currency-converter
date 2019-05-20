@@ -16,7 +16,8 @@
         "ext-pdo": "*",
         "ext-http": "*",
         "ext-json": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "symfony/yaml": "^4.2"
     },
     "autoload": {
       "psr-4": {

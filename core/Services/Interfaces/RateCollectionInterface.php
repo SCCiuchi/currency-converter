@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Interfaces;
+namespace Core\Services\Interfaces;
 
-use Core\Services\RateProviderService\RateCollection;
+use Core\Services\RateService\RateCollection;
 
 interface RateCollectionInterface
 {

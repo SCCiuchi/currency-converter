@@ -2,9 +2,9 @@
 
 namespace Core\Services\ExchangeService;
 
-use Core\Services\RateProviderService\RateCollection;
+use Core\Services\RateService\RateCollection;
 
-class ExchangeRates
+class Exchange
 {
     /** @var RateCollection */
     protected $rateCollection;

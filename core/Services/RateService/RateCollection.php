@@ -1,11 +1,11 @@
 <?php
 
-namespace Core\Services\RateProviderService;
+namespace Core\Services\RateService;
 
 class RateCollection implements  \Iterator
 {
+    protected $data = [];   
     private $index = 0;
-    protected $data = [];
 
     public function __construct()
     {
@@ -14,16 +14,10 @@ class RateCollection implements  \Iterator
 
     public function addCurrency(string $currency, float $rate): void
     {
-//        $this->data[$currency] = $rate;
         $this->data[] = [
             "label" => $currency,
             "value" => $rate
         ];
-    }
-
-    public function getRates(): array
-    {
-        return $this->data;
     }
 
     public function findSelectedCurrency(string $currency)
@@ -33,6 +27,11 @@ class RateCollection implements  \Iterator
                 return $item;
             }
         }
+    }
+
+    public function getRates(): array
+    {
+        return $this->data;
     }
 
     public function current()

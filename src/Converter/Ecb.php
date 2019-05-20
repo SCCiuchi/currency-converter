@@ -2,8 +2,8 @@
 
 namespace App\Converter;
 
-use Core\Services\RateProviderService\RateCollection;
-use Core\Services\RateProviderService\XMLReader;
+use Core\Services\RateService\RateCollection;
+use Core\Services\RateService\XMLReader;
 use Core\Interfaces\RateCollectionInterface;
 
 class Ecb implements RateCollectionInterface
