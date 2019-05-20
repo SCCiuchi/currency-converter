@@ -11,8 +11,8 @@ $twig = new \Twig\Environment($loader);
 
 echo $twig->render('index.html.twig');
 
-// $debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new \Core\Services\RateProviderService\XMLReader()));
-// $debug->displayRate();
+$debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new \Core\Services\RateReader\XMLReader()));
+$debug->displayRate();
 
 $yaml = new \Config\ConfigReader\Reader();
 $yaml->start();
