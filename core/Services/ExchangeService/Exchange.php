@@ -6,22 +6,8 @@ use Core\Services\RateService\RateCollection;
 
 class Exchange
 {
-    /** @var RateCollection */
-    protected $rateCollection;
-
-    protected $selectedCurrency;
-
-    public function __construct(RateCollection $rateCollection, string $selectedCurrency)
+    public function executeExchange(RateCollection $rateCollection, string $selectedCurrency): array
     {
-        $this->rateCollection = $rateCollection;
-        $this->selectedCurrency = $selectedCurrency;
-    }
-
-    public function executeExchange(): array
-    {
-        $rateCollection = $this->rateCollection;
-        $selectedCurrency = $this->selectedCurrency;
-
         if (!empty($rateCollection)) {
             $result = [];
             $findSelectedCurrency = $rateCollection->findSelectedCurrency($selectedCurrency);

@@ -10,9 +10,16 @@ $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/views');
 $twig = new \Twig\Environment($loader);
 
 echo $twig->render('index.html.twig');
-//
+
 //$debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new Config\RateReader\XMLReader()));
 //$debug->displayRate();
 
-$yaml = new \Config\ConfigReader\ConfigLoader();
-$yaml->debug();
+//$yaml = new \Config\ConfigReader\ConfigLoader();
+//$yaml->getConfigKeys('db');
+//var_dump($yaml->getConfigKeys('db'));
+
+//$router = new \Config\Router\Router($_SERVER);
+//$router->addRoute('', function () {
+//   echo 'it works!';
+//});
+//$router->run();

@@ -8,19 +8,27 @@ class ConfigLoader
 {
     private const CONFIG_FILE = 'config.yml';
     private const CONFIG_PATH = __DIR__.'/../../';
-    private static $cachedConfig = [];
+    private $cachedConfig = [];
 
-    public function debug()
+    public function __construct()
     {
-        $config = $this->loadConfig();
-        var_dump($config);
     }
-    
-    private function loadConfig()
+
+    public function getConfigKeys(string $name = '')
+    {
+        if (empty($cachedConfig)) {
+            $cachedConfig = $this->loadConfig()->cachedConfig;
+        }
+
+        return $cachedConfig[$name];
+    }
+
+    private function loadConfig(): self
     {
         $loader = new Loader();
         $loader->load(self::CONFIG_PATH . self::CONFIG_FILE);
+        $this->cachedConfig = $loader->export();
 
-        return static::$cachedConfig = $loader->export();
+        return $this;
     }
 }

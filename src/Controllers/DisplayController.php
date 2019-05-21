@@ -22,12 +22,9 @@ class DisplayController
         $selectedCurrency = $this->getUserSelectedCurrency();
 
         if (isset($selectedCurrency)) {
-            $exchangeService = new Exchange(
-                $this->rateProvider->getRate(),
-                $selectedCurrency
-            );
+            $exchangeService = new Exchange();
 
-            $result = $exchangeService->executeExchange();
+            $result = $exchangeService->executeExchange($this->rateProvider->getRate(), $selectedCurrency);
 
             var_dump($result);
         }

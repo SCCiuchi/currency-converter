@@ -1,5 +1,5 @@
-test:
-  sub-test1: placeholder
-
-test2:
-  sub-test2: 'string_placeholder'
+db:
+  host: '127.0.0.1'
+  user: 'stefanciuchi'
+  password: 'parolasigura'
+  name: 'currency_converter'
