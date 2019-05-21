@@ -23,6 +23,6 @@ echo $twig->render('index.html.twig');
 //});
 //$debug->run();
 
-$debug = \Core\Database\DbConnection::getInstance();
-$conn = $debug->getConnection();
-var_dump($conn);
+//$debug = \Core\Database\DbConnection::getInstance();
+//$conn = $debug->getConnection();
+//var_dump($conn);
