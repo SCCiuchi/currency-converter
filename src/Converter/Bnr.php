@@ -3,7 +3,7 @@
 namespace App\Converter;
 
 use Core\Services\RateService\RateCollection;
-use Core\Services\RateReader\XMLReader;
+use Config\RateReader\XMLReader;
 use Core\Services\Interfaces\RateCollectionInterface;
 
 class Bnr implements RateCollectionInterface
