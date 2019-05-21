@@ -14,12 +14,15 @@ echo $twig->render('index.html.twig');
 //$debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new Config\RateReader\XMLReader()));
 //$debug->displayRate();
 
-//$yaml = new \Config\ConfigReader\ConfigLoader();
-//$yaml->getConfigKeys('db');
-//var_dump($yaml->getConfigKeys('db'));
+//$debug = new \Config\ConfigReader\ConfigLoader();
+//var_dump($debug->getConfigKeys('db')['host']);
 
-//$router = new \Config\Router\Router($_SERVER);
-//$router->addRoute('', function () {
+//$debug = new \Config\Router\Router($_SERVER);
+//$debug->addRoute('', function () {
 //   echo 'it works!';
 //});
-//$router->run();
+//$debug->run();
+
+$debug = \Core\Database\DbConnection::getInstance();
+$conn = $debug->getConnection();
+var_dump($conn);

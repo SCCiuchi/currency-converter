@@ -2,7 +2,9 @@
 
 namespace Config\Router;
 
-class Router
+use Config\Router\Interfaces\RouterInterface;
+
+class Router implements RouterInterface
 {
     public $request;
     public $routes = [];
@@ -22,7 +24,7 @@ class Router
         return array_key_exists($uri, $this->routes);
     }
 
-    public function run()
+    public function run(): void
     {
         if ($this->hasRoute($this->request)) {
             $this->routes[$this->request]->call($this);

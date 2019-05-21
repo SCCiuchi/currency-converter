@@ -2,20 +2,21 @@
 
 namespace Core\Database;
 
+use Config\ConfigReader\ConfigLoader;
+
 class DbConnection
 {
     private static $instance = null;
     private $conn;
 
-    private $host = '127.0.0.1';
-    private $user = 'stefanciuchi';
-    private $pass = 'parolasigura';
-    private $name = 'currency_converter';
-
     private function __construct()
     {
-        $this->conn = new \PDO("mysql:host={$this->host};
-        dbname={$this->name}", $this->user, $this->pass,
+        $config = new ConfigLoader();
+
+        $this->conn = new \PDO("mysql:host={$config->getConfigKeys('db')['host']};
+        dbname={$config->getConfigKeys('db')['name']}",
+            $config->getConfigKeys('db')['user'],
+            $config->getConfigKeys('db')['password'],
         array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
     }
 

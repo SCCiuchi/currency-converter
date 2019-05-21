@@ -6,7 +6,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class Loader extends Reader
 {
-    public function load($path)
+    public function load($path): self
     {
         $this->setSource($path);
 

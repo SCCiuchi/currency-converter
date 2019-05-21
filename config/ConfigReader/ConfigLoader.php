@@ -2,8 +2,6 @@
 
 namespace Config\ConfigReader;
 
-use Config\ConfigReader\Loader;
-
 class ConfigLoader
 {
     private const CONFIG_FILE = 'config.yml';
@@ -12,15 +10,16 @@ class ConfigLoader
 
     public function __construct()
     {
+        $this->loadConfig();
     }
 
-    public function getConfigKeys(string $name = '')
+    public function getConfigKeys(string $configKey)
     {
         if (empty($cachedConfig)) {
-            $cachedConfig = $this->loadConfig()->cachedConfig;
+            $cachedConfig = $this->cachedConfig;
         }
 
-        return $cachedConfig[$name];
+        return $cachedConfig[$configKey];
     }
 
     private function loadConfig(): self
