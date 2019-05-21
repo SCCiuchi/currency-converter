@@ -3,34 +3,33 @@
 namespace Config\ConfigReader;
 
 use Config\ConfigReader\Interfaces\ReaderInterface;
-use Symfony\Component\Yaml\Yaml;
 
-class Reader implements ReaderInterface
+abstract class Reader implements ReaderInterface
 {
-	/** @var ConfigReaderInterface */
-	protected $yamlReader;
-	protected $configPath;
+    protected $config = [];
+    protected $source = '';
 
-	public function __construct()
-	{
+    public function getSource(): array
+    {
+        return $this->config;
+    }
 
-	}
+    public function setSource(string $source)
+    {
+        $this->source = $source;
 
-	public function start(): void
-	{
-		$yamlParsed = Yaml::parse(file_get_contents(__DIR__.'/../../config.yml'));
-		$yamlString = Yaml::dump($yamlParsed);
+        return $this;
+    }
 
-		var_dump($yamlString);
-	}
+    public function export(): array
+    {
+       return $this->config;
+    }
 
-	public function read(): array
-	{
-		
-	}
+    public function keys(): array
+    {
+        return array_keys($this->config);
+    }
 
-	public function stop(): void
-	{
-		
-	}
+    abstract public function load($path);
 }

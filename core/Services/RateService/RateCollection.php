@@ -7,11 +7,6 @@ class RateCollection implements  \Iterator
     protected $data = [];   
     private $index = 0;
 
-    public function __construct()
-    {
-        $this->index = 0;
-    }
-
     public function addCurrency(string $currency, float $rate): void
     {
         $this->data[] = [
@@ -34,7 +29,7 @@ class RateCollection implements  \Iterator
         return $this->data;
     }
 
-    public function current()
+    public function current(): array
     {
         return $this->data[$this->index];
     }
@@ -44,12 +39,12 @@ class RateCollection implements  \Iterator
         return $this->index;
     }
 
-    public function next()
+    public function next(): void
     {
         ++$this->index;
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->index = 0;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Services\Interfaces;
+namespace Core\Services\RateService\Interfaces;
 
 use Core\Services\RateService\RateCollection;
 

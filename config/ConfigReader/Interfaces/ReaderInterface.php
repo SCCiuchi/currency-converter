@@ -4,7 +4,7 @@ namespace Config\ConfigReader\Interfaces;
 
 interface ReaderInterface
 {
-	public function start(): void;
-	public function read(): array;
-	public function stop(): void;
+	public function export(): array;
+	public function keys(): array;
+	public function getSource(): array;
 }

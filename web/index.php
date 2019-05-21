@@ -10,9 +10,9 @@ $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/views');
 $twig = new \Twig\Environment($loader);
 
 echo $twig->render('index.html.twig');
-
+//
 //$debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new Config\RateReader\XMLReader()));
 //$debug->displayRate();
 
-$yaml = new \Config\ConfigReader\Reader();
-$yaml->start();
+$yaml = new \Config\ConfigReader\ConfigLoader();
+$yaml->debug();
