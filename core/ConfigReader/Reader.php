@@ -1,8 +1,8 @@
 <?php
 
-namespace Config\ConfigReader;
+namespace Core\ConfigReader;
 
-use Config\ConfigReader\Interfaces\ReaderInterface;
+use Core\ConfigReader\Interfaces\ReaderInterface;
 
 abstract class Reader implements ReaderInterface
 {

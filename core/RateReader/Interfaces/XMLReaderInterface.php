@@ -1,6 +1,6 @@
 <?php
 
-namespace Config\RateReader\Interfaces;
+namespace Core\RateReader\Interfaces;
 
 interface XMLReaderInterface
 {

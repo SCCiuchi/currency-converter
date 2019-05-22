@@ -1,8 +1,8 @@
 <?php
 
-namespace Config\Router;
+namespace Core\Router;
 
-use Config\Router\Interfaces\RouterInterface;
+use Core\Router\Interfaces\RouterInterface;
 
 class Router implements RouterInterface
 {

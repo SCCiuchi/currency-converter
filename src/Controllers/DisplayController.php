@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use Core\Services\RateService\Interfaces\RateCollectionInterface;
-use Core\Services\ExchangeService\Exchange;
+use App\Services\RateService\Interfaces\RateCollectionInterface;
+use App\Services\ExchangeService\Exchange;
 
 class DisplayController
 {
@@ -32,16 +32,10 @@ class DisplayController
 
     private function getUserSelectedCurrency(): string
     {
-        $currencyPattern = "/[A-Z][A-Z][A-Z]/";
+        $currencyPattern = "/([a-zA-Z]{3})/";
 
-        if(
-            isset($_POST['currency'])
-            && ctype_alpha($_POST['currency'])
-            && preg_match($currencyPattern, $_POST['currency'])
-        ) {
-            $selectedCurrency = $_POST['currency'];
+        if(preg_match($currencyPattern, $_POST['currency'])) {
+            return $_POST['currency'];
         }
-
-        return $selectedCurrency;
     }
 }

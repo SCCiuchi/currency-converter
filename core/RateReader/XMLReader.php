@@ -1,8 +1,8 @@
 <?php
 
-namespace Config\RateReader;
+namespace Core\RateReader;
 
-use Config\RateReader\Interfaces\XMLReaderInterface;
+use Core\RateReader\Interfaces\XMLReaderInterface;
 
 class XMLReader implements XMLReaderInterface
 {

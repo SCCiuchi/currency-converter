@@ -1,6 +1,6 @@
 <?php
 
-namespace Config\Router\Interfaces;
+namespace Core\Router\Interfaces;
 
 interface RouterInterface
 {

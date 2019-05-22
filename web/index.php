@@ -1,5 +1,5 @@
 <?php
-
+// TODO remove these lines
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -11,18 +11,21 @@ $twig = new \Twig\Environment($loader);
 
 echo $twig->render('converter.html.twig');
 
-//$debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new Config\RateReader\XMLReader()));
+
+
+// TODO remove debug
+//$debug = new \App\Controllers\DisplayController(new \App\Converter\Ecb(new Core\RateReader\XMLReader()));
 //$debug->displayRate();
 
-//$debug = new \Config\ConfigReader\ConfigLoader();
+//$debug = new \Core\ConfigReader\ConfigLoader();
 //var_dump($debug->getConfigKeys('db')['host']);
 
-//$debug = new \Config\Router\Router($_SERVER);
+//$debug = new \Core\Router\Router($_SERVER);
 //$debug->addRoute('', function () {
 //   echo 'it works!';
 //});
 //$debug->run();
 
-//$debug = \Core\Database\DbConnection::getInstance();
+//$debug = \App\Services\Database\DbConnection::getInstance();
 //$conn = $debug->getConnection();
 //var_dump($conn);

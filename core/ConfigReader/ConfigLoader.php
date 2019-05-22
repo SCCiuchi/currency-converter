@@ -1,11 +1,11 @@
 <?php
 
-namespace Config\ConfigReader;
+namespace Core\ConfigReader;
 
 class ConfigLoader
 {
     private const CONFIG_FILE = 'config.yml';
-    private const CONFIG_PATH = __DIR__.'/../../';
+    private const CONFIG_PATH = __DIR__ . '/../../config/';
     private $cachedConfig = [];
 
     public function __construct()

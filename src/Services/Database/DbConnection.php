@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Database;
+namespace App\Services\Database;
 
-use Config\ConfigReader\ConfigLoader;
+use Core\ConfigReader\ConfigLoader;
 
 class DbConnection
 {

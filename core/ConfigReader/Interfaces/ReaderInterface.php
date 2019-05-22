@@ -1,6 +1,6 @@
 <?php
 
-namespace Config\ConfigReader\Interfaces;
+namespace Core\ConfigReader\Interfaces;
 
 interface ReaderInterface
 {

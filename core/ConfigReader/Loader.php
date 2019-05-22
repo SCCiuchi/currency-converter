@@ -1,6 +1,6 @@
 <?php
 
-namespace Config\ConfigReader;
+namespace Core\ConfigReader;
 
 use Symfony\Component\Yaml\Yaml;
 

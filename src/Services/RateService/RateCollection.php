@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Services\RateService;
+namespace App\Services\RateService;
 
 class RateCollection implements  \Iterator
 {
