@@ -1,0 +1,28 @@
+{
+    "name": "stefanciuchi/currency-converter",
+    "description": "beginner php learning project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "SCCiuchi",
+            "email": "stefan.ciuchi@yahoo.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "php-http/message": "^1.7",
+        "twig/twig": "^2.9",
+        "ext-SimpleXML": "*",
+        "ext-pdo": "*",
+        "ext-http": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "symfony/yaml": "^4.2"
+    },
+    "autoload": {
+      "psr-4": {
+        "App\\": "src/",
+        "Core\\": "core/"
+      }
+    }
+}
